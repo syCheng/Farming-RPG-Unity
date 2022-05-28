@@ -1,0 +1,22 @@
+/Assets/Animations
+/Assets/Tiles
+/Assets/Udemy RPG Assets
+/Library
+/hooks
+/lfs
+/Logs
+/obj
+/Packages
+/ProjectSettings
+/Temp
+/UserSettings
+/.vs
+.vsconfig
+Unity.*
+Assembly-*
+UnityEngine.*
+DocCodeExamples.Player.csproj
+PsdPlugin.csproj
+Unity*
+Udemy*
+SeparateAssembly.Player.csproj

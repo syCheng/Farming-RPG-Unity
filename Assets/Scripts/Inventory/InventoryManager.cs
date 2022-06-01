@@ -8,8 +8,10 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
 
     [SerializeField] private SO_ItemList itemList = null;
 
-    private void Start()
+    // Awake method gets called before the 'start' method inside 'item'
+    protected override void Awake()
     {
+        base.Awake();
         CreateItemDetailsDictionary();
     }
 

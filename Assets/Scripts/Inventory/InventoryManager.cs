@@ -65,9 +65,6 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
         inventoryItem.itemCode = itemCode;
         inventoryItem.itemQuantity = 1;
         inventoryList.Add(inventoryItem);
-
-        Debug.ClearDeveloperConsole();
-        DebugPrintInventoryList(inventoryList);
     }
 
     private void AddItemAtPosition(List<InventoryItem> inventoryList, int itemCode, int position)
@@ -78,9 +75,6 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
         inventoryItem.itemCode = itemCode;
         inventoryItem.itemQuantity = quantity;
         inventoryList[position] = inventoryItem;
-
-        Debug.ClearDeveloperConsole();
-        DebugPrintInventoryList(inventoryList);
     }
 
     private int FindItemInInventory(InventoryLocation inventoryLocation, int itemCode)
@@ -116,15 +110,5 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
         {
             return null;
         }
-    }
-
-    private void DebugPrintInventoryList(List<InventoryItem> inventoryList)
-    {
-        foreach (InventoryItem inventoryItem in inventoryList)
-        {
-            Debug.Log("Item description: " + InventoryManager.Instance.GetItemDetails(inventoryItem.itemCode).itemDescription + ", Item Quantity: " + inventoryItem.itemQuantity);
-        }
-
-        Debug.Log("==========================================");
     }
 }

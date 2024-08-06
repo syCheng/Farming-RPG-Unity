@@ -5,6 +5,20 @@ using UnityEngine;
 namespace FarmingRPG2
 {
 
+    public enum InventoryLocation
+    {
+        player,
+        chest,
+        count
+    }
+
+    public enum ToolEffect
+    {
+        none,
+        watering
+    }
+
+
     public enum CharacterPartAnimator
     {
         body,

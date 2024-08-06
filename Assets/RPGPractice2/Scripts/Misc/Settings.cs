@@ -16,7 +16,9 @@ namespace FarmingRPG2
         public const float runningSpeed = 5.333f;
         public const float walkingSpeed = 2.666f;
 
-
+        // Inventory
+        public static int playerInitialInventoryCapacity = 24;
+        public static int playerMaximumInventoryCapacity = 48;
 
         // Player Animation Parameters
         public static int xInput;

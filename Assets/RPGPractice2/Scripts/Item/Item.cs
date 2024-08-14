@@ -41,6 +41,10 @@ namespace FarmingRPG2
                 spriteRenderer.sprite = itemDetails.itemSprite;
 
                 //Nudge
+                if (itemDetails.itemType == ItemType.Reapable_scenary)
+                {
+                    gameObject.AddComponent<ItemNudge>();
+                }
             }
         }
     }

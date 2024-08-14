@@ -175,6 +175,13 @@ namespace FarmingRPG2
                 movementSpeed = Settings.runningSpeed;
             }
         }
+
+        internal Vector3 GetPlayerViewportPosition()
+        {
+            return mainCamera.WorldToViewportPoint(transform.position);
+        }
+
+
     }
 
 

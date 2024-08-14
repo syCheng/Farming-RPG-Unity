@@ -115,6 +115,8 @@ namespace FarmingRPG2
             EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
         }
 
+
+
         private void AddItemAtPosition(List<InventoryItem> inventoryList, int itemCode, int itemPosition)
         {
             InventoryItem inventoryItem = new InventoryItem();

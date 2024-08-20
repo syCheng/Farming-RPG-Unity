@@ -147,12 +147,14 @@ namespace FarmingRPG2
             string debugStr = string.Empty;
             for (int i = 0; i < inventoryList.Count; i++)
             {
-                debugStr += $"{GetItemDetails(inventoryList[i].itemCode).itemDescription} : [{inventoryList[i].itemQuantity}]" + "\n";
+                debugStr += $"{GetItemDetails(inventoryList[i].itemCode).itemDescription} : [{inventoryList[i].itemQuantity}] ";
                 ;
             }
             Debug.Log("<color=#7FFF00><size=12>" + $"{debugStr}" + "</size></color>");
         }
 
+
+        //add item already exist
         private void AddItemAtPosition(List<InventoryItem> inventoryList, int itemCode, int itemPosition)
         {
             InventoryItem inventoryItem = new InventoryItem();
@@ -161,7 +163,7 @@ namespace FarmingRPG2
             inventoryList[itemPosition] = inventoryItem;
         }
 
-
+        //add new item 
         private void AddItemAtPosition(List<InventoryItem> inventoryList,int itemCode)
         {
             InventoryItem inventoryItem = new InventoryItem();
@@ -169,9 +171,6 @@ namespace FarmingRPG2
             inventoryItem.itemQuantity = 1;
             inventoryList.Add(inventoryItem);
         }
-
-
-
 
 
 

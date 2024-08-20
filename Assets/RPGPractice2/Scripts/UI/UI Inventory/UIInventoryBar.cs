@@ -61,5 +61,6 @@ namespace FarmingRPG2
 
         //pick up the item  by script
 
+
     }
 }

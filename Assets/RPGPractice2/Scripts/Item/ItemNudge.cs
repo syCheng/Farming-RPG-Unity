@@ -51,7 +51,7 @@ namespace FarmingRPG2
 
 
 
-        //顺时针方向抖动
+        //顺时针方向抖动  //
         private IEnumerator RotateClockwise()
         {
             isAnimating = true;

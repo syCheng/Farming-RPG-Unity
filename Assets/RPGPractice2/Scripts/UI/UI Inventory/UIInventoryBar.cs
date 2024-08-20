@@ -57,5 +57,9 @@ namespace FarmingRPG2
                 isInventoryBarPositionBottom = false;
             }
         }
+
+
+        //pick up the item  by script
+
     }
 }

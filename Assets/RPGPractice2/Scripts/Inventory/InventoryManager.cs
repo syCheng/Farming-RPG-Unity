@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 namespace FarmingRPG2
 {
@@ -15,6 +16,7 @@ namespace FarmingRPG2
         private SO_ItemList itemList = null;
 
 
+        //hold all inventory Items 
         public List<InventoryItem>[] inventoryLists;
 
 
@@ -32,6 +34,10 @@ namespace FarmingRPG2
 
       
 
+
+        /// <summary>
+        /// Populates the itemDetailsDictionary from the scriptable object Items List.
+        /// </summary>
         private void CreateItemDetailsDictionary()
         {
             itemDetailsDictionary = new Dictionary<int, ItemDetails>();
@@ -42,6 +48,13 @@ namespace FarmingRPG2
             }
         }
 
+
+
+        /// <summary>
+        /// return the ItemDetails (from SO_ItemList) for the itemCode
+        /// </summary>
+        /// <param name="itemCode"></param>
+        /// <returns></returns>
         public ItemDetails GetItemDetails(int itemCode)
         {
             if (itemDetailsDictionary.TryGetValue(itemCode, out ItemDetails itemDetails1))
@@ -77,6 +90,7 @@ namespace FarmingRPG2
         {
             inventoryLists = new List<InventoryItem>[(int)InventoryLocation.count];
 
+            //index 0 : Player    //index 1 : Chests
             for (int i = 0; i < inventoryLists.Length; i++)
             {
                 inventoryLists[i] = new List<InventoryItem>();
@@ -86,6 +100,14 @@ namespace FarmingRPG2
 
             //初始化角色物品栏个数
             inventoryListCapacityIntArray[(int)InventoryLocation.player] = Settings.playerInitialInventoryCapacity;
+        }
+
+
+
+        public void AddItem(GameObject itemObj,InventoryLocation inventoryLocation,Item item)
+        {
+            AddItem(inventoryLocation, item);
+            Destroy(itemObj);
         }
 
 
@@ -111,11 +133,25 @@ namespace FarmingRPG2
                 AddItemAtPosition(inventoryList,itemCode,itemPosition);    
             }
 
+
+            DebugPrintItemList(inventoryLocation);
+
             //物品改变事件触发
             EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
         }
 
 
+        private void DebugPrintItemList(InventoryLocation inventoryLocation)
+        {
+            List<InventoryItem> inventoryList = inventoryLists[(int)inventoryLocation];
+            string debugStr = string.Empty;
+            for (int i = 0; i < inventoryList.Count; i++)
+            {
+                debugStr += $"{GetItemDetails(inventoryList[i].itemCode).itemDescription} : [{inventoryList[i].itemQuantity}]" + "\n";
+                ;
+            }
+            Debug.Log("<color=#7FFF00><size=12>" + $"{debugStr}" + "</size></color>");
+        }
 
         private void AddItemAtPosition(List<InventoryItem> inventoryList, int itemCode, int itemPosition)
         {
@@ -133,6 +169,7 @@ namespace FarmingRPG2
             inventoryItem.itemQuantity = 1;
             inventoryList.Add(inventoryItem);
         }
+
 
 
 

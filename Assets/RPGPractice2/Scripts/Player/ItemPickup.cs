@@ -12,9 +12,10 @@ namespace FarmingRPG2
             if (item != null)
             {
                 ItemDetails itemDetails = InventoryManager.Instance.GetItemDetails(item.ItemCode);
-                Debug.Log("<color=#7FFF00><size=12>" + $"{itemDetails.itemDescription}" + "</size></color>");
+                //Debug.Log("<color=#7FFF00><size=12>" + $"{itemDetails.itemDescription}" + "</size></color>");
 
                 //Pick Up
+                InventoryManager.Instance.AddItem(item.gameObject, InventoryLocation.player, item);
             }
         }
     }

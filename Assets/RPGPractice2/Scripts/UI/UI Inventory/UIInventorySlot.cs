@@ -56,14 +56,14 @@ namespace FarmingRPG2
         }
 
 
-        //开始拖拽
+        //开始拖拽  
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (itemDetails != null)
             {
                 Player.Instance.DisablePlayerInputAndResetMovement();
 
-                //drag to instantiate item
+                //drag to instantiate the dragged item
                 draggedItem = Instantiate(inventoryBar.inventoryBarDraggedItem, inventoryBar.transform);
 
                 Image draggedItemImage = draggedItem.GetComponentInChildren<Image>();
@@ -91,9 +91,14 @@ namespace FarmingRPG2
                 {
 
                     //Swap the item.
+                    //Current Camera Position. 
+                    UIInventorySlot targetSlot = eventData.pointerCurrentRaycast.gameObject.GetComponent<UIInventorySlot>();
+                    int toSlotNumber = targetSlot.slotNumber;
 
+                    //Swap item.
+                    //InventoryManager.Instance.SwapInventoryItem();
 
-                    //
+                    //Get the item component .
 
                 }
                 else
@@ -109,6 +114,10 @@ namespace FarmingRPG2
                 Player.Instance.EnablePlayerInput();
             }
         }
+
+
+
+
 
 
         private void DropSelectedItemAtMousePosition()

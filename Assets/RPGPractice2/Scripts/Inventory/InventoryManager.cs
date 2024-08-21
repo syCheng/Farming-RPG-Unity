@@ -194,7 +194,7 @@ namespace FarmingRPG2
 
 
 
-
+        //移除物品栏物品 
         public void RemoveItem(InventoryLocation inventoryLocation,int itemCode)
         {
             List<InventoryItem> inventoryList = inventoryLists[(int)inventoryLocation];

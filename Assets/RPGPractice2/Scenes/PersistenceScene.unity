@@ -1407,6 +1407,7 @@ MonoBehaviour:
   - {fileID: 868821257}
   - {fileID: 1730602012}
   - {fileID: 668728033}
+  inventoryBarDraggedItem: {fileID: 418794383094648657, guid: f3572b7c5323dd340a30a020acaa58f1, type: 3}
 --- !u!1001 &868821255
 PrefabInstance:
   m_ObjectHideFlags: 0

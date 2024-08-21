@@ -104,6 +104,20 @@ namespace FarmingRPG2
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void AddItem(GameObject itemObj,InventoryLocation inventoryLocation,Item item)
         {
             AddItem(inventoryLocation, item);
@@ -170,6 +184,52 @@ namespace FarmingRPG2
             inventoryItem.itemCode = itemCode;
             inventoryItem.itemQuantity = 1;
             inventoryList.Add(inventoryItem);
+        }
+
+
+
+
+
+
+
+
+
+
+        public void RemoveItem(InventoryLocation inventoryLocation,int itemCode)
+        {
+            List<InventoryItem> inventoryList = inventoryLists[(int)inventoryLocation];
+
+            int itemPosition = FindItemInInventory(inventoryLocation,itemCode);
+
+            if (itemPosition != -1)
+            {
+                RemoveItemAtPosition(inventoryList, itemCode, itemPosition);
+            }
+
+
+            //call update event
+            EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
+        }
+
+
+
+
+        private void RemoveItemAtPosition(List<InventoryItem> inventoryList, int itemCode, int itemPosition)
+        {
+            //Remove item at position 
+            InventoryItem inventoryItem = new InventoryItem();
+
+            int quantity = inventoryList[itemPosition].itemQuantity - 1;
+            if (quantity > 0)
+            {
+                inventoryItem.itemQuantity = quantity;
+                inventoryItem.itemCode = itemCode;
+                inventoryList[itemPosition] = inventoryItem;
+            }
+            else
+            {
+                inventoryList.RemoveAt(itemPosition);    
+            }
         }
 
 

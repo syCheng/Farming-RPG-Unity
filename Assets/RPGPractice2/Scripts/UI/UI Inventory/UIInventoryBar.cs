@@ -8,6 +8,8 @@ namespace FarmingRPG2
 {
     //物品栏
     //1.实时检查Player位置 根据位置判断是否在底部
+    //2.监听EventHandler.InventoryUpdatedEvent 刷新显示
+    //3.拖拽Slot后Drop物品 刷新
     public class UIInventoryBar : MonoBehaviour
     {
 
@@ -15,6 +17,9 @@ namespace FarmingRPG2
 
 
         [SerializeField] private UIInventorySlot[] uiInventorySlots;
+
+
+        public GameObject inventoryBarDraggedItem;
 
 
         private RectTransform rectTransform;

@@ -14,7 +14,7 @@ namespace FarmingRPG2
     /// <summary>
     /// 物品槽位
     /// </summary>
-    public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+    public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
     {
 
         private Camera mainCamera;
@@ -134,6 +134,21 @@ namespace FarmingRPG2
                 // Remove item from players inventory
                 InventoryManager.Instance.RemoveItem(InventoryLocation.player, item.ItemCode);
             }
+        }
+
+
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            //show the description box
+        }
+
+
+
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            //hide the description box
         }
     }
 }

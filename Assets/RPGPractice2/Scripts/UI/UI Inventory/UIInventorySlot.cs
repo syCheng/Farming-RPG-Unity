@@ -96,7 +96,7 @@ namespace FarmingRPG2
                     int toSlotNumber = targetSlot.slotNumber;
 
                     //Swap item.
-                    //InventoryManager.Instance.SwapInventoryItem();
+                    InventoryManager.Instance.SwapInventoryItem(InventoryLocation.player,slotNumber,toSlotNumber);
 
                     //Get the item component .
 

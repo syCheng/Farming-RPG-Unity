@@ -162,7 +162,6 @@ namespace FarmingRPG2
             for (int i = 0; i < inventoryList.Count; i++)
             {
                 debugStr += $"{GetItemDetails(inventoryList[i].itemCode).itemDescription} : [{inventoryList[i].itemQuantity}] ";
-                ;
             }
             Debug.Log("<color=#7FFF00><size=12>" + $"{debugStr}" + "</size></color>");
         }
@@ -232,7 +231,21 @@ namespace FarmingRPG2
             }
         }
 
+        //swap two inventory item
+        internal void SwapInventoryItem(InventoryLocation inventoryLocation, int fromItem, int toItem)
+        {
+            if (fromItem < inventoryLists[(int)inventoryLocation].Count &&
+                toItem < inventoryLists[(int)inventoryLocation].Count &&
+                fromItem != toItem && fromItem >= 0 && toItem >= 0)
+            {
+                InventoryItem fromInventoryItem = inventoryLists[(int)inventoryLocation][fromItem];
+                InventoryItem toInventoryItem = inventoryLists[(int)inventoryLocation][toItem];
+                inventoryLists[(int)inventoryLocation][toItem] = fromInventoryItem;
+                inventoryLists[(int)inventoryLocation][fromItem] = toInventoryItem;
 
+                EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
+            }
+        }
 
 
         private int FindItemInInventory(InventoryLocation inventoryLocation, int itemCode)
@@ -246,5 +259,9 @@ namespace FarmingRPG2
 
             return -1;
         }
+
+
+        
+        
     }
 }
